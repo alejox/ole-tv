@@ -3,6 +3,9 @@
  * Values are ported from the original Oleada TV site — do not invent new prices or claims.
  */
 
+/** Canonical origin. Every absolute URL in metadata and JSON-LD derives from this. */
+export const SITE_URL = "https://oleada.lat";
+
 export const CONTACT = {
   whatsappNumber: "573145763378",
   whatsapp: "https://wa.me/573145763378",

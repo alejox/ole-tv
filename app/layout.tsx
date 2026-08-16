@@ -3,14 +3,14 @@ import { Inter, Outfit } from "next/font/google";
 import { ContactFab } from "@/components/contact-fab";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { FAQ } from "@/lib/site-data";
+import { FAQ, SITE_URL } from "@/lib/site-data";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.oleada-tv.online"),
+  metadataBase: new URL(SITE_URL),
   title: "Oleada TV | Streaming IPTV en Colombia y Latinoamérica",
   description:
     "Oleada TV: streaming IPTV premium con más de 1.600 canales en vivo, 20.000 películas y series en HD, FHD y 4K. Planes desde $3.5 USD y soporte 24/7.",
@@ -48,7 +48,7 @@ const structuredData = {
     {
       "@type": "Product",
       name: "Oleada TV - Suscripción IPTV",
-      image: "https://www.oleada-tv.online/assets/img/oleada.png",
+      image: `${SITE_URL}/assets/img/oleada.png`,
       description:
         "Suscripción Oleada TV: streaming IPTV con +1600 canales en vivo, +20.000 películas y series en HD/FHD/4K. Planes para 1 o 3 dispositivos en Colombia y Latinoamérica.",
       brand: { "@type": "Brand", name: "Oleada TV" },
@@ -60,7 +60,7 @@ const structuredData = {
         highPrice: "70",
         offerCount: 8,
         availability: "https://schema.org/InStock",
-        url: "https://www.oleada-tv.online/",
+        url: `${SITE_URL}/`,
       },
       aggregateRating: {
         "@type": "AggregateRating",
