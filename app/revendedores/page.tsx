@@ -1,22 +1,74 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reseller } from "@/components/reseller";
-import { RESELLER_BENEFITS, whatsappLink } from "@/lib/site-data";
+import { OG_IMAGE, OPEN_GRAPH_DEFAULTS } from "@/lib/seo";
+import { RESELLER_BENEFITS, RESELLER_PLANS, SITE_URL, whatsappLink } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "Ser revendedor de Oleada TV | Créditos al por mayor",
+  /** The layout template appends "| Oleada TV", so this half stays distinctive. */
+  title: "Ser revendedor: créditos IPTV al por mayor",
   description:
-    "Compra créditos de activación de Oleada TV al por mayor, vende cuentas y crea tus propios sub-paneles. Paneles desde $0.90 USD por crédito y soporte para revendedores.",
+    "Compra créditos de activación de Oleada TV al por mayor, vende cuentas y crea tus sub-paneles. Paneles desde $0.90 USD por crédito.",
   alternates: { canonical: "/revendedores" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     title: "Ser revendedor de Oleada TV",
     description:
       "Créditos de activación al por mayor, panel propio y sub-paneles. Paneles desde $0.90 USD por crédito.",
     url: "/revendedores",
-    siteName: "Oleada TV",
-    locale: "es_CO",
-    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ser revendedor de Oleada TV",
+    description:
+      "Créditos de activación al por mayor, panel propio y sub-paneles. Paneles desde $0.90 USD por crédito.",
+    images: [OG_IMAGE.url],
+  },
+};
+
+/** Derived from RESELLER_PLANS so the rich result tracks the published panel prices. */
+const panelPrices = [
+  ...RESELLER_PLANS[1].mensual,
+  ...RESELLER_PLANS[1].anual,
+  ...RESELLER_PLANS[3].mensual,
+  ...RESELLER_PLANS[3].anual,
+].map((plan) => Number(plan.price));
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Revendedores",
+          item: `${SITE_URL}/revendedores`,
+        },
+      ],
+    },
+    {
+      "@type": "Product",
+      "@id": `${SITE_URL}/revendedores#product`,
+      name: "Panel de revendedor Oleada TV",
+      image: `${SITE_URL}/assets/img/og-oleada.jpg`,
+      description:
+        "Panel de revendedor de Oleada TV: créditos de activación al por mayor que no expiran, venta de cuentas y creación de sub-paneles, con soporte técnico dedicado.",
+      brand: { "@type": "Brand", name: "Oleada TV" },
+      sku: "OLEADA-TV-PANEL",
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "USD",
+        lowPrice: Math.min(...panelPrices).toString(),
+        highPrice: Math.max(...panelPrices).toString(),
+        offerCount: panelPrices.length,
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/revendedores#paneles`,
+      },
+    },
+  ],
 };
 
 const RESELLER_WHATSAPP = whatsappLink(
@@ -110,6 +162,11 @@ export default function ResellerPage() {
       </section>
 
       <Reseller />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </main>
   );
 }

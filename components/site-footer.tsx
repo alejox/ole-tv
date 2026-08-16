@@ -16,7 +16,7 @@ export function SiteFooter() {
             />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/50">
               Streaming IPTV premium con más de 1.600 canales en vivo, películas y series en HD, FHD
-              y 4K para Colombia y toda Latinoamérica.
+              y 4K, con distribuidores autorizados en toda Latinoamérica.
             </p>
           </div>
 

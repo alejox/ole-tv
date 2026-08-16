@@ -117,7 +117,8 @@ export function Plans() {
         </div>
 
         <p className="mt-8 text-center text-sm text-white/40">
-          Pagos por PSE, Nequi, Daviplata, Bancolombia, transferencia, PayPal y criptomonedas.
+          Pagos por transferencia bancaria, PayPal, criptomonedas y los métodos locales de cada
+          país.
         </p>
       </div>
     </section>

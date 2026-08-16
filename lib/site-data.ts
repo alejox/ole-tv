@@ -51,7 +51,7 @@ export const RESELLER_LINK = { href: "/revendedores", label: "Revendedores" } as
 export const HERO_SLIDES = [
   {
     image: "/assets/img/bg-oleada1.webp",
-    alt: "Oleada TV, servicio de streaming IPTV en Colombia",
+    alt: "Oleada TV, servicio de streaming IPTV en Latinoamérica",
     eyebrow: "Calidad al instante",
     title: "Todo el entretenimiento",
     highlight: "en una sola app",
@@ -93,7 +93,7 @@ export const STATS = [
 export const FEATURES = [
   {
     title: "Streaming estable en toda Latinoamérica",
-    body: "Servidores optimizados para Colombia, Ecuador, Perú, Chile, México, Brasil, Venezuela y Argentina. Conexión fluida en HD, FHD y 4K las 24 horas.",
+    body: "Servidores optimizados para toda la región: México, Colombia, Argentina, Chile, Perú, Ecuador, Brasil, Venezuela y más. Conexión fluida en HD, FHD y 4K las 24 horas.",
     image: "/assets/img/bg-oleada4.webp",
     alt: "Oleada TV en pantalla grande",
     span: "lg:col-span-2 lg:row-span-2",
@@ -296,7 +296,7 @@ export function distributorWhatsapp(distributor: Distributor): string {
 export const FAQ = [
   {
     q: "¿Qué es Oleada TV y por qué es la mejor opción de streaming IPTV?",
-    a: "Oleada TV es un servicio premium de streaming IPTV con más de 1.600 canales en vivo, 20.000 películas y series en calidad HD, FHD y 4K. Destaca por su estabilidad, catálogo amplio, app intuitiva, soporte 24/7 y servidores optimizados para Colombia y toda Latinoamérica.",
+    a: "Oleada TV es un servicio premium de streaming IPTV con más de 1.600 canales en vivo, 20.000 películas y series en calidad HD, FHD y 4K. Destaca por su estabilidad, catálogo amplio, app intuitiva, soporte 24/7 y servidores optimizados para toda Latinoamérica.",
   },
   {
     q: "¿Puedo probar Oleada TV gratis?",
@@ -324,11 +324,11 @@ export const FAQ = [
   },
   {
     q: "¿En qué países funciona Oleada TV?",
-    a: "Funciona en Colombia, Ecuador, Perú, Chile, Brasil, Venezuela, México, Argentina, Bolivia, Panamá, República Dominicana, Estados Unidos y prácticamente cualquier país con conexión estable a internet.",
+    a: "Funciona en México, Colombia, Argentina, Chile, Perú, Ecuador, Brasil, Venezuela, Bolivia, Panamá, República Dominicana, Estados Unidos y prácticamente cualquier país con conexión estable a internet.",
   },
   {
     q: "¿Cómo puedo pagar por el servicio?",
-    a: "Aceptamos transferencias bancarias, PSE, Nequi, Daviplata, Bancolombia, PayPal, criptomonedas y otros métodos electrónicos. Contacta a un distribuidor autorizado por WhatsApp para coordinar el pago.",
+    a: "Aceptamos transferencias bancarias, PayPal, criptomonedas y los métodos de pago electrónicos locales de cada país (en Colombia, además, PSE, Nequi, Daviplata y Bancolombia). Contacta al distribuidor autorizado de tu país por WhatsApp y él te indica las opciones disponibles en tu zona.",
   },
   {
     q: "¿Cómo me convierto en distribuidor o revendedor?",
