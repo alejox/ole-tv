@@ -11,7 +11,6 @@ export const CONTACT = {
   telegram: "https://t.me/oleadatvpro",
   youtube: "https://www.youtube.com/@mtvpcol",
   tutorial: "https://youtu.be/0Httruhlu74?si=FSLUMcWgaSUYKn3v",
-
 } as const;
 
 export const DOWNLOADS = {
@@ -46,7 +45,10 @@ export const NAV_LINKS = [
 ] as const;
 
 /** Reselling targets a separate audience, so it lives on its own route with its own header button. */
-export const RESELLER_LINK = { href: "/revendedores", label: "Revendedores" } as const;
+export const RESELLER_LINK = {
+  href: "/revendedores",
+  label: "Revendedores",
+} as const;
 
 export const HERO_SLIDES = [
   {
@@ -119,7 +121,11 @@ export const DEVICES = [
   { title: "TV Stick", image: "/assets/img/TVStick.png", href: DOWNLOADS.tv },
   { title: "Smart TV", image: "/assets/img/SmartTV.png", href: DOWNLOADS.tv },
   { title: "Tablet", image: "/assets/img/Tablet.png", href: DOWNLOADS.mobile },
-  { title: "Celular", image: "/assets/img/Celular.png", href: DOWNLOADS.mobile },
+  {
+    title: "Celular",
+    image: "/assets/img/Celular.png",
+    href: DOWNLOADS.mobile,
+  },
   { title: "PC", image: "/assets/img/PC.png", href: DOWNLOADS.tv },
 ] as const;
 
@@ -186,39 +192,97 @@ export type ResellerPlan = {
   credit: string;
 };
 
-export const RESELLER_PLANS: Record<1 | 3, Record<"mensual" | "anual", readonly ResellerPlan[]>> = {
+export const RESELLER_PLANS: Record<
+  1 | 3,
+  Record<"mensual" | "anual", readonly ResellerPlan[]>
+> = {
   1: {
     mensual: [
-      { title: "Bronce", credits: "30 créditos", price: "52.5", credit: "$1.75" },
+      {
+        title: "Bronce",
+        credits: "30 créditos",
+        price: "52.5",
+        credit: "$1.75",
+      },
       { title: "Plata", credits: "50 créditos", price: "80", credit: "$1.60" },
       { title: "Oro", credits: "100 créditos", price: "140", credit: "$1.40" },
-      { title: "Platino", credits: "300 créditos", price: "360", credit: "$1.20" },
-      { title: "Diamante", credits: "500 créditos", price: "500", credit: "$1.00" },
-      { title: "Black Panel", credits: "1000 créditos", price: "900", credit: "$0.90" },
+      {
+        title: "Platino",
+        credits: "300 créditos",
+        price: "360",
+        credit: "$1.20",
+      },
+      {
+        title: "Diamante",
+        credits: "500 créditos",
+        price: "500",
+        credit: "$1.00",
+      },
+      {
+        title: "Black Panel",
+        credits: "1000 créditos",
+        price: "900",
+        credit: "$0.90",
+      },
     ],
     anual: [
       { title: "Bronce", credits: "5 créditos", price: "80", credit: "$16" },
       { title: "Plata", credits: "10 créditos", price: "140", credit: "$14" },
       { title: "Oro", credits: "25 créditos", price: "300", credit: "$12" },
       { title: "Platino", credits: "50 créditos", price: "500", credit: "$10" },
-      { title: "Diamante", credits: "100 créditos", price: "900", credit: "$9" },
+      {
+        title: "Diamante",
+        credits: "100 créditos",
+        price: "900",
+        credit: "$9",
+      },
     ],
   },
   3: {
     mensual: [
-      { title: "Bronce", credits: "30 créditos", price: "105", credit: "$3.50" },
+      {
+        title: "Bronce",
+        credits: "30 créditos",
+        price: "105",
+        credit: "$3.50",
+      },
       { title: "Plata", credits: "50 créditos", price: "160", credit: "$3.20" },
       { title: "Oro", credits: "100 créditos", price: "280", credit: "$2.80" },
-      { title: "Platino", credits: "300 créditos", price: "720", credit: "$2.40" },
-      { title: "Diamante", credits: "500 créditos", price: "1000", credit: "$2.00" },
-      { title: "Black Panel", credits: "1000 créditos", price: "1800", credit: "$1.80" },
+      {
+        title: "Platino",
+        credits: "300 créditos",
+        price: "720",
+        credit: "$2.40",
+      },
+      {
+        title: "Diamante",
+        credits: "500 créditos",
+        price: "1000",
+        credit: "$2.00",
+      },
+      {
+        title: "Black Panel",
+        credits: "1000 créditos",
+        price: "1800",
+        credit: "$1.80",
+      },
     ],
     anual: [
       { title: "Bronce", credits: "5 créditos", price: "160", credit: "$32" },
       { title: "Plata", credits: "10 créditos", price: "280", credit: "$28" },
       { title: "Oro", credits: "25 créditos", price: "600", credit: "$24" },
-      { title: "Platino", credits: "50 créditos", price: "1000", credit: "$20" },
-      { title: "Black Panel", credits: "100 créditos", price: "1800", credit: "$18" },
+      {
+        title: "Platino",
+        credits: "50 créditos",
+        price: "1000",
+        credit: "$20",
+      },
+      {
+        title: "Black Panel",
+        credits: "100 créditos",
+        price: "1800",
+        credit: "$18",
+      },
     ],
   },
 };
@@ -273,27 +337,68 @@ export const DISTRIBUTORS: Record<string, Distributor> = {
     name: "Ivan",
     whatsapp: "https://wa.me/593983013302",
   },
-  accesoriosmix:{
-    name:"Accesorios Mix",
+  accesoriosmix: {
+    name: "Accesorios Mix",
     whatsapp: "https://wa.me/593969380656",
   },
-    javiertech:{
-    name:"JavierTech",
+  javiertech: {
+    name: "JavierTech",
     whatsapp: "https://wa.me/593967110242",
-  }
+    telegram: "https://t.me/Javiertech593",
+  },
 };
 
 export const COUNTRIES = [
-  { name: "Colombia", flag: "/assets/img/icons/Colombia-SVG.svg", distributors: [ "oleadatvprocol", "mgsproCintia","mgsprotv"] },
-  { name: "Ecuador", flag: "/assets/img/icons/Ecuador-SVG.svg", distributors: ["accesoriosmix","javiertech","drSystemSolutions", "ivan"] },
-  { name: "Venezuela", flag: "/assets/img/icons/Venezuela-SVG.svg", distributors: ["carlosValbuena","oleadatvprocol", "mgsproCintia"] },
-  { name: "Perú", flag: "/assets/img/icons/Peru-SVG.svg", distributors: ["carlosValbuena"] },
-  { name: "Chile", flag: "/assets/img/icons/Chile-SVG.svg", distributors: ["carlosValbuena"] },
-  { name: "Brasil", flag: "/assets/img/icons/Brazil-SVG.svg", distributors: ["danielTv","oleadatvprocol", "mgsproCintia"] },
-  { name: "Cuba", flag: "/assets/img/icons/Cuba-SVG.svg", distributors: ["danielTv"] },
-  { name: "Panamá", flag: "/assets/img/icons/Panama-SVG.svg", distributors: ["carlosValbuena"] },
-  { name: "República Dominicana", flag: "/assets/img/icons/DominicanRepublic-SVG.svg", distributors: ["carlosValbuena"] },
-  { name: "Estados Unidos", flag: "/assets/img/icons/USA-SVG.svg", distributors: ["carlosValbuena"] },
+  {
+    name: "Colombia",
+    flag: "/assets/img/icons/Colombia-SVG.svg",
+    distributors: ["oleadatvprocol", "mgsproCintia", "mgsprotv"],
+  },
+  {
+    name: "Ecuador",
+    flag: "/assets/img/icons/Ecuador-SVG.svg",
+    distributors: ["accesoriosmix", "javiertech", "drSystemSolutions", "ivan"],
+  },
+  {
+    name: "Venezuela",
+    flag: "/assets/img/icons/Venezuela-SVG.svg",
+    distributors: ["carlosValbuena", "oleadatvprocol", "mgsproCintia"],
+  },
+  {
+    name: "Perú",
+    flag: "/assets/img/icons/Peru-SVG.svg",
+    distributors: ["carlosValbuena"],
+  },
+  {
+    name: "Chile",
+    flag: "/assets/img/icons/Chile-SVG.svg",
+    distributors: ["carlosValbuena"],
+  },
+  {
+    name: "Brasil",
+    flag: "/assets/img/icons/Brazil-SVG.svg",
+    distributors: ["danielTv", "oleadatvprocol", "mgsproCintia"],
+  },
+  {
+    name: "Cuba",
+    flag: "/assets/img/icons/Cuba-SVG.svg",
+    distributors: ["danielTv"],
+  },
+  {
+    name: "Panamá",
+    flag: "/assets/img/icons/Panama-SVG.svg",
+    distributors: ["carlosValbuena"],
+  },
+  {
+    name: "República Dominicana",
+    flag: "/assets/img/icons/DominicanRepublic-SVG.svg",
+    distributors: ["carlosValbuena"],
+  },
+  {
+    name: "Estados Unidos",
+    flag: "/assets/img/icons/USA-SVG.svg",
+    distributors: ["carlosValbuena"],
+  },
 ] as const;
 
 /** Prefilled WhatsApp link for a distributor, so the customer does not start from a blank chat. */
