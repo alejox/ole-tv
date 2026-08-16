@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import { ContactFab } from "@/components/contact-fab";
+import { HashScroll } from "@/components/hash-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FAQ, SITE_URL } from "@/lib/site-data";
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" className={`${inter.variable} ${outfit.variable}`}>
       <body>
+        <HashScroll />
         <SiteHeader />
         {children}
         <SiteFooter />

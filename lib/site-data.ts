@@ -8,12 +8,10 @@ export const SITE_URL = "https://oleada.lat";
 
 export const CONTACT = {
   whatsappNumber: "573145763378",
-  whatsapp: "https://wa.me/573145763378",
   telegram: "https://t.me/oleadatvpro",
-  telegramGroup: "https://t.me/+5MxONYIWCuE1Y2Yx",
   youtube: "https://www.youtube.com/@mtvpcol",
   tutorial: "https://youtu.be/0Httruhlu74?si=FSLUMcWgaSUYKn3v",
-  phoneLabel: "+57 314 576 3378",
+
 } as const;
 
 export const DOWNLOADS = {
@@ -25,14 +23,30 @@ export function whatsappLink(message: string): string {
   return `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/**
+ * Opener used by every generic WhatsApp CTA (header, hero, footer, floating button, final CTA).
+ * Sections with their own context — plans, reseller, distributors — build a more specific message.
+ */
+export const DEFAULT_WHATSAPP_MESSAGE =
+  "Hola, te contacto desde la web de Oleada TV. Quiero información sobre los planes y la activación.";
+
+/** Prebuilt link for the generic CTAs, so no entry point ever opens a blank chat. */
+export const CONTACT_WHATSAPP_LINK = whatsappLink(DEFAULT_WHATSAPP_MESSAGE);
+
+/**
+ * Landing anchors. Hrefs are root-relative (`/#id`, not `#id`) so they still resolve
+ * from routes other than the landing — the header and footer render on every page.
+ */
 export const NAV_LINKS = [
-  { href: "#servicio", label: "Servicio" },
-  { href: "#descargas", label: "Descargas" },
-  { href: "#planes", label: "Planes" },
-  { href: "#reventa", label: "Reventa" },
-  { href: "#distribuidores", label: "Distribuidores" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#servicio", label: "Servicio" },
+  { href: "/#descargas", label: "Descargas" },
+  { href: "/#planes", label: "Planes" },
+  { href: "/#distribuidores", label: "Distribuidores" },
+  { href: "/#faq", label: "FAQ" },
 ] as const;
+
+/** Reselling targets a separate audience, so it lives on its own route with its own header button. */
+export const RESELLER_LINK = { href: "/revendedores", label: "Revendedores" } as const;
 
 export const HERO_SLIDES = [
   {
@@ -154,14 +168,14 @@ export const PLANS: Record<1 | 3, readonly Plan[]> = {
   1: [
     { period: "Mensual", price: "3.5" },
     { period: "Trimestral", price: "10.5" },
-    { period: "Semestral", price: "21", bonus: "+ 1 mes gratis", featured: true },
-    { period: "Anual", price: "35", bonus: "+ 2 meses gratis" },
+    { period: "Semestral", price: "21", bonus: "+ 1 mes gratis" },
+    { period: "Anual", price: "35", bonus: "+ 2 meses gratis", featured: true },
   ],
   3: [
     { period: "Mensual", price: "7" },
     { period: "Trimestral", price: "21" },
-    { period: "Semestral", price: "42", bonus: "+ 1 mes gratis", featured: true },
-    { period: "Anual", price: "70", bonus: "+ 2 meses gratis" },
+    { period: "Semestral", price: "42", bonus: "+ 1 mes gratis" },
+    { period: "Anual", price: "70", bonus: "+ 2 meses gratis", featured: true },
   ],
 };
 
@@ -212,68 +226,62 @@ export const RESELLER_PLANS: Record<1 | 3, Record<"mensual" | "anual", readonly 
 export const RESELLER_BENEFITS = [
   "Los créditos no expiran",
   "Vender cuentas y sub-paneles",
-  "Soporte técnico para revendedores",
 ] as const;
 
 export type Distributor = {
   name: string;
-  phone: string;
   whatsapp: string;
   telegram?: string;
 };
 
-/** Authorized distributors, keyed by id. Several of them cover more than one country. */
+/**
+ * Authorized distributors, keyed by id. Several of them cover more than one country.
+ * Phone numbers are never rendered: customers reach a distributor through the chat links only.
+ */
 export const DISTRIBUTORS: Record<string, Distributor> = {
   oleadatvprocol: {
-    name: "OLEADATVPROCOL",
-    phone: "+57 314 576 3378",
+    name: "OLEADATV COLOMBIA",
     whatsapp: "https://wa.me/573145763378",
     telegram: "https://t.me/oleadatvpro",
   },
   mgsprotv: {
-    name: "MGSPROTV",
-    phone: "+57 313 253 1929",
+    name: "OLEADATV-JUAN",
     whatsapp: "https://wa.me/573132531929",
     telegram: "https://t.me/magprotv",
   },
   mgsproCintia: {
-    name: "MGSPRO-CINTIA",
-    phone: "+57 311 352 3221",
+    name: "OLEADATV-CINTIA",
     whatsapp: "https://wa.me/573113523221",
     telegram: "https://t.me/oleadatvpro",
   },
   carlosValbuena: {
     name: "Carlos Valbuena",
-    phone: "+58 414 368 8614",
     whatsapp: "https://wa.me/584143688614",
     telegram: "https://t.me/cvalbuena",
   },
   danielTv: {
     name: "DanielTV",
-    phone: "+55 47 99182 2685",
     whatsapp: "https://wa.me/5547991822685",
     telegram: "https://t.me/jorgedaniel92",
   },
   drSystemSolutions: {
     name: "Dr System SolutionsPC",
-    phone: "+593 98 585 9472",
     whatsapp: "https://wa.me/593985859472",
     telegram: "https://t.me/SOPORTEDEMAGISTVPRO",
   },
   ivan: {
     name: "Ivan",
-    phone: "+593 98 301 3302",
     whatsapp: "https://wa.me/593983013302",
   },
 };
 
 export const COUNTRIES = [
-  { name: "Colombia", flag: "/assets/img/icons/Colombia-SVG.svg", distributors: ["mgsprotv", "oleadatvprocol", "mgsproCintia"] },
+  { name: "Colombia", flag: "/assets/img/icons/Colombia-SVG.svg", distributors: [ "oleadatvprocol", "mgsproCintia","mgsprotv"] },
   { name: "Ecuador", flag: "/assets/img/icons/Ecuador-SVG.svg", distributors: ["drSystemSolutions", "ivan"] },
-  { name: "Venezuela", flag: "/assets/img/icons/Venezuela-SVG.svg", distributors: ["carlosValbuena"] },
+  { name: "Venezuela", flag: "/assets/img/icons/Venezuela-SVG.svg", distributors: ["carlosValbuena","oleadatvprocol", "mgsproCintia"] },
   { name: "Perú", flag: "/assets/img/icons/Peru-SVG.svg", distributors: ["carlosValbuena"] },
   { name: "Chile", flag: "/assets/img/icons/Chile-SVG.svg", distributors: ["carlosValbuena"] },
-  { name: "Brasil", flag: "/assets/img/icons/Brazil-SVG.svg", distributors: ["danielTv"] },
+  { name: "Brasil", flag: "/assets/img/icons/Brazil-SVG.svg", distributors: ["danielTv","oleadatvprocol", "mgsproCintia"] },
   { name: "Cuba", flag: "/assets/img/icons/Cuba-SVG.svg", distributors: ["danielTv"] },
   { name: "Panamá", flag: "/assets/img/icons/Panama-SVG.svg", distributors: ["carlosValbuena"] },
   { name: "República Dominicana", flag: "/assets/img/icons/DominicanRepublic-SVG.svg", distributors: ["carlosValbuena"] },
@@ -281,9 +289,8 @@ export const COUNTRIES = [
 ] as const;
 
 /** Prefilled WhatsApp link for a distributor, so the customer does not start from a blank chat. */
-export function distributorWhatsapp(distributor: Distributor, country: string): string {
-  const message = `Hola, te contacto desde la web de Oleada TV (${country}). Quiero información sobre los planes y la activación.`;
-  return `${distributor.whatsapp}?text=${encodeURIComponent(message)}`;
+export function distributorWhatsapp(distributor: Distributor): string {
+  return `${distributor.whatsapp}?text=${encodeURIComponent(DEFAULT_WHATSAPP_MESSAGE)}`;
 }
 
 export const FAQ = [

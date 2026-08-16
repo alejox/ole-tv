@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CONTACT, DOWNLOADS } from "@/lib/site-data";
+import { CONTACT_WHATSAPP_LINK, DOWNLOADS } from "@/lib/site-data";
 
 export function FinalCta() {
   return (
@@ -20,13 +20,12 @@ export function FinalCta() {
             Empieza a ver hoy <span className="text-gradient">desde $3.5 USD</span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/65">
-            Activación en minutos con un distribuidor autorizado. Soporte técnico 24/7 y prueba
-            disponible antes de pagar.
+            Activación en minutos con un distribuidor autorizado.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
             <a
-              href={CONTACT.whatsapp}
+              href={CONTACT_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               className="rounded-full bg-gradient-to-r from-brand-bright to-brand px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_10px_40px_-10px_var(--color-brand)] transition-transform hover:scale-[1.03]"

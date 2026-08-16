@@ -1,4 +1,4 @@
-import { CONTACT } from "@/lib/site-data";
+import { CONTACT, CONTACT_WHATSAPP_LINK } from "@/lib/site-data";
 
 export function ContactFab() {
   return (
@@ -15,7 +15,7 @@ export function ContactFab() {
         </svg>
       </a>
       <a
-        href={CONTACT.whatsapp}
+        href={CONTACT_WHATSAPP_LINK}
         target="_blank"
         rel="noreferrer"
         aria-label="Contactar por WhatsApp"

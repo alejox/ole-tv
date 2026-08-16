@@ -27,7 +27,9 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* No `scroll-behavior: smooth`. The animated jump stalls partway on this page — the
+       heavy blur layers and hero images keep the main thread busy enough that Chrome drops
+       the animation, stranding the reader between sections. Instant jumps always land. */
     scroll-padding-top: 6rem;
   }
 
@@ -36,7 +38,9 @@
     color: #e8edf6;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    /* `clip`, not `hidden`: `hidden` turns body into a scroll container, which fights
+       `scroll-behavior: smooth` on html and freezes every in-page anchor jump. */
+    overflow-x: clip;
   }
 
   ::selection {
@@ -85,10 +89,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {

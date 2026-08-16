@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CONTACT, NAV_LINKS } from "@/lib/site-data";
+import { CONTACT, CONTACT_WHATSAPP_LINK, NAV_LINKS, RESELLER_LINK } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
@@ -25,7 +25,7 @@ export function SiteFooter() {
               Navegación
             </h3>
             <ul className="mt-5 flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
+              {[...NAV_LINKS, RESELLER_LINK].map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -45,12 +45,12 @@ export function SiteFooter() {
             <ul className="mt-5 flex flex-col gap-3">
               <li>
                 <a
-                  href={CONTACT.whatsapp}
+                  href={CONTACT_WHATSAPP_LINK}
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm text-white/65 transition-colors hover:text-brand-bright"
                 >
-                  WhatsApp {CONTACT.phoneLabel}
+                  WhatsApp
                 </a>
               </li>
               <li>
@@ -63,16 +63,7 @@ export function SiteFooter() {
                   Telegram
                 </a>
               </li>
-              <li>
-                <a
-                  href={CONTACT.telegramGroup}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-white/65 transition-colors hover:text-brand-bright"
-                >
-                  Comunidad en Telegram
-                </a>
-              </li>
+
               <li>
                 <a
                   href={CONTACT.youtube}

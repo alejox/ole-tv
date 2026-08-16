@@ -37,13 +37,13 @@ export function Reseller() {
   const plans = RESELLER_PLANS[devices][period];
 
   return (
-    <section id="reventa" className="relative py-24 sm:py-32">
+    <section id="paneles" className="relative scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Reventa"
-          title="Conviértete en"
-          highlight="distribuidor autorizado"
-          body="Compra créditos de activación al por mayor, vende cuentas y crea tus propios sub-paneles. Los créditos no expiran."
+          eyebrow="Paneles"
+          title="Elige el panel según"
+          highlight="tu volumen de ventas"
+          body="Cada panel define cuántos créditos de activación recibes y a qué precio te queda cada uno. Puedes subir de panel cuando tus ventas lo justifiquen."
         />
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -90,7 +90,7 @@ export function Reseller() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
           {plans.map((plan) => (
             <article
               key={plan.title}

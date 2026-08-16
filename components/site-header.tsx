@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CONTACT, NAV_LINKS } from "@/lib/site-data";
+import { CONTACT, CONTACT_WHATSAPP_LINK, NAV_LINKS, RESELLER_LINK } from "@/lib/site-data";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-          <a href="#top" className="shrink-0" aria-label="Oleada TV, ir al inicio">
+          <Link href="/#top" className="shrink-0" aria-label="Oleada TV, ir al inicio">
             <Image
               src="/assets/img/oleada.png"
               alt="Oleada TV"
@@ -50,7 +51,7 @@ export function SiteHeader() {
               priority
               className="h-9 w-auto sm:h-10"
             />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
             {NAV_LINKS.map((link) => (
@@ -65,8 +66,14 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <Link
+              href={RESELLER_LINK.href}
+              className="hidden rounded-full border border-brand/50 px-5 py-2.5 text-sm font-semibold text-brand-bright transition-colors hover:border-brand hover:bg-brand/10 md:inline-flex"
+            >
+              {RESELLER_LINK.label}
+            </Link>
             <a
-              href={CONTACT.whatsapp}
+              href={CONTACT_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               className="hidden rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] sm:inline-flex"
@@ -144,14 +151,22 @@ export function SiteHeader() {
           </nav>
 
           <div className="mt-auto flex flex-col gap-3">
+            <Link
+              href={RESELLER_LINK.href}
+              onClick={() => setOpen(false)}
+              tabIndex={open ? 0 : -1}
+              className="rounded-full border border-brand/50 px-5 py-3.5 text-center font-semibold text-brand-bright"
+            >
+              {RESELLER_LINK.label}
+            </Link>
             <a
-              href={CONTACT.whatsapp}
+              href={CONTACT_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               tabIndex={open ? 0 : -1}
               className="rounded-full bg-brand px-5 py-3.5 text-center font-semibold text-ink"
             >
-              WhatsApp {CONTACT.phoneLabel}
+              WhatsApp
             </a>
             <a
               href={CONTACT.telegram}

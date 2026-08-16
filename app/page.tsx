@@ -5,7 +5,6 @@ import { Features } from "@/components/features";
 import { FinalCta } from "@/components/final-cta";
 import { Hero } from "@/components/hero";
 import { Plans } from "@/components/plans";
-import { Reseller } from "@/components/reseller";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <Features />
       <Devices />
       <Plans />
-      <Reseller />
       <Distributors />
       <Faq />
       <FinalCta />

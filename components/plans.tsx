@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PLAN_FEATURES, PLANS, whatsappLink, type Plan } from "@/lib/site-data";
+import { PLAN_FEATURES, PLANS } from "@/lib/site-data";
 import { SectionHeading } from "@/components/section-heading";
 
 type DeviceCount = 1 | 3;
@@ -10,14 +10,6 @@ const DEVICE_TABS: { value: DeviceCount; label: string }[] = [
   { value: 1, label: "1 dispositivo" },
   { value: 3, label: "3 dispositivos" },
 ];
-
-function planLink(plan: Plan, devices: DeviceCount) {
-  const deviceLabel = devices === 1 ? "1 Dispositivo" : "3 Dispositivos";
-  const bonus = plan.bonus ? ` (${plan.bonus})` : "";
-  return whatsappLink(
-    `Hola, estoy interesado en el plan de ${deviceLabel} ${plan.period}${bonus} por $${plan.price} USD. ¿Me ayudas con el proceso para activar mi cuenta?`,
-  );
-}
 
 export function Plans() {
   const [devices, setDevices] = useState<DeviceCount>(3);
@@ -69,9 +61,9 @@ export function Plans() {
                   : "surface"
               }`}
             >
-              {plan.featured ? (
-                <span className="absolute -top-3 left-7 rounded-full bg-brand px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-ink">
-                  Más elegido
+              {plan.bonus ? (
+                <span className="absolute -top-3 left-7 rounded-full bg-brand px-3 py-1 text-xs font-bold text-ink">
+                  {plan.bonus}
                 </span>
               ) : null}
 
@@ -85,8 +77,6 @@ export function Plans() {
                 </span>
                 <span className="text-sm text-white/40">USD</span>
               </p>
-
-              <p className="mt-1 h-5 text-sm font-medium text-brand-bright">{plan.bonus ?? ""}</p>
 
               <ul className="mt-6 flex flex-1 flex-col gap-3 border-t border-white/10 pt-6">
                 {PLAN_FEATURES[devices].map((feature) => (
@@ -113,9 +103,7 @@ export function Plans() {
               </ul>
 
               <a
-                href={planLink(plan, devices)}
-                target="_blank"
-                rel="noreferrer"
+                href="#distribuidores"
                 className={`mt-7 rounded-full px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-[1.02] ${
                   plan.featured
                     ? "bg-brand text-ink"

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { CONTACT, DOWNLOADS, HERO_SLIDES, STATS } from "@/lib/site-data";
+import { CONTACT_WHATSAPP_LINK, DOWNLOADS, HERO_SLIDES, STATS } from "@/lib/site-data";
 
 const ROTATE_MS = 6500;
 
@@ -106,7 +106,7 @@ export function Hero() {
               ))}
             </div>
             <a
-              href={CONTACT.whatsapp}
+              href={CONTACT_WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
               className="text-sm font-medium text-white/60 underline-offset-4 transition-colors hover:text-brand-bright hover:underline"
