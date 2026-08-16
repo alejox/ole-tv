@@ -276,12 +276,16 @@ export const DISTRIBUTORS: Record<string, Distributor> = {
   accesoriosmix:{
     name:"Accesorios Mix",
     whatsapp: "https://wa.me/593969380656",
+  },
+    javiertech:{
+    name:"JavierTech",
+    whatsapp: "https://wa.me/593967110242",
   }
 };
 
 export const COUNTRIES = [
   { name: "Colombia", flag: "/assets/img/icons/Colombia-SVG.svg", distributors: [ "oleadatvprocol", "mgsproCintia","mgsprotv"] },
-  { name: "Ecuador", flag: "/assets/img/icons/Ecuador-SVG.svg", distributors: ["accesoriosmix","drSystemSolutions", "ivan"] },
+  { name: "Ecuador", flag: "/assets/img/icons/Ecuador-SVG.svg", distributors: ["accesoriosmix","javiertech","drSystemSolutions", "ivan"] },
   { name: "Venezuela", flag: "/assets/img/icons/Venezuela-SVG.svg", distributors: ["carlosValbuena","oleadatvprocol", "mgsproCintia"] },
   { name: "Perú", flag: "/assets/img/icons/Peru-SVG.svg", distributors: ["carlosValbuena"] },
   { name: "Chile", flag: "/assets/img/icons/Chile-SVG.svg", distributors: ["carlosValbuena"] },
